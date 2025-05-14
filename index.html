@@ -262,9 +262,9 @@
           .withSuccessHandler((data) => {
             openingText = data.opening;
             closingText = data.closing;
-            createButtons(data.praiseData, "praiseButtons", "praise");
-            createButtons(data.baseDeductData, "baseButtons", "base");
-            createButtons(data.advDeductData, "advButtons", "adv");
+            createButtons(data.praiseData, "tbody-1", "praise");
+            createButtons(data.baseDeductData, "tbody-2", "base");
+            createButtons(data.advDeductData, "tbody-3", "adv");
             updateFeedbackArea();
           })
           .getFeedbackData();
@@ -290,8 +290,7 @@
       }
 
       function createButtons(items, containerId, type) {
-        const tbody = document.getElementById(containerId);
-        tbody.innerHTML = "";
+        
         console.log(items);
         items.forEach(([title, content, score]) => {
           const tr = document.createElement("tr");
@@ -318,6 +317,7 @@
               addItem(title, content, score, type);
             }
           };
+          const tbody = document.getElementById(containerId);
           tbody.appendChild(tr);
         });
       }
